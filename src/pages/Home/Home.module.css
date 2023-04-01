@@ -1,0 +1,21 @@
+
+
+.container {
+    margin: 10px;
+    padding: 20px;
+}
+
+.title {
+   margin-bottom: 20px;
+
+   font-size: 44px;
+}
+
+.movies {
+    margin-left: 20px;
+}
+
+.movies__item {
+    font-size: 22px;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,21 @@
+
+
+.reviews {
+    font-size: 22px;
+    width: 900px;
+    margin-left: 40px;
+}
+
+.reviewsNotFoundInform {
+    margin-left: 40px;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+.reviews__item {
+    margin-bottom: 25px;
+}
+
+.reviews__autor {
+    font-weight: 800;
+    margin-bottom: 8px;
+}

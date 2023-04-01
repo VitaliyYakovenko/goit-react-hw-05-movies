@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom";
 import {trendingMovies}  from "API/themoviedbAPI"
-
+import css from './Home.module.css';
 
 export default function Home() {
     const [movies, setMovies] = useState([]);
@@ -13,17 +13,17 @@ export default function Home() {
     }, []) 
 
     return (
-        <>
-        <h1>Tranding today</h1>
-        <ul>
+        <div className={css.container}>
+        <h1 className={css.title} >Tranding today</h1>
+        <ul className={css.movies}>
         {movies.map(movie => (
-        <li key={movie.id}>
+        <li className={css.movies__item} key={movie.id}>
         <Link to={`movies/${movie.id}`} state={{from: location}}>
         <span>{movie.title || movie.name}</span>
         </Link>
         </li>
         ))}
         </ul>
-        </>
+        </div>
         )  
 }

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { getMovieReviews } from "API/themoviedbAPI"
-
+import css from "./Reviews.module.css";
 
 
 export default function Reviews() {
@@ -15,14 +15,14 @@ export default function Reviews() {
    
 
     if (reviews.length === 0) {
-        return(<p>We dont have any reviews for this movie.</p>) 
+        return(<p className={css.reviewsNotFoundInform}>We dont have any reviews for this movie.</p>) 
     }
     if (reviews.length !== 0) {
         return (
-            <ul>
+            <ul className={css.reviews}>
                 {reviews.map(review => (
-                    <li key={review.id}>
-                        <p>{review.author_details.username}</p>
+                    <li className={css.reviews__item} key={review.id}>
+                        <p className={css.reviews__autor}>{review.author_details.username}</p>
                         <p>{review.content}</p>
                     </li>
                 ))}

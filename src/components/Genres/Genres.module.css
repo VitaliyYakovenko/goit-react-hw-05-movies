@@ -1,0 +1,11 @@
+
+
+.genres {
+    margin-bottom: 5px;
+    font-size: 26px;
+}
+
+
+.genres__item:not(:last-child) {
+    margin-bottom: 5px;
+}

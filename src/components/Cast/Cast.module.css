@@ -1,0 +1,19 @@
+
+
+.cast {
+    text-align: center;
+    width: 200px;
+    margin-left: 20px;
+}
+.noInfomCast {
+    margin-left: 40px;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+.cast__item {
+    margin-bottom: 20px;
+}
+
+.cast__photo {
+    margin-bottom: 10px;
+}

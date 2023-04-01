@@ -1,0 +1,18 @@
+
+.header {
+   font-size: 24px;
+   margin: 10px;
+   padding: 20px;
+   border: 1px solid black;
+   box-shadow: 3px 3px 3px black;
+}
+
+.header__nav {
+    display: flex;
+}
+
+
+.header__item {
+    margin-right: 50px;
+}
+

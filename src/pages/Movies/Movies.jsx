@@ -1,6 +1,8 @@
 import { useEffect, useState} from "react"
 import { Link, useSearchParams, useLocation  } from "react-router-dom";
 import { searchMovieByName } from "API/themoviedbAPI"
+import css from "./Movies.module.css";
+
 
 export default function Movies() {
     const [searchParams, setSearchParams] = useSearchParams();    
@@ -10,9 +12,7 @@ export default function Movies() {
     const [status, setStatus] = useState("idle");
     const [moviesName, setMovieName] = useState("");
 
-    useEffect(() => {
-        movies && setStatus("resolved")
-    },[movies])
+  
      
     const onChangeMovieName = (e) => {
         const { value } = e.target;
@@ -25,6 +25,8 @@ export default function Movies() {
         }
         setSearchParams({query: moviesName})
     }
+    
+
 
     useEffect(() => {
         if (!queryName) {
@@ -40,37 +42,36 @@ export default function Movies() {
         setMovieName("");
         });    
         }
-    },[queryName, setMovies]) 
+    },[queryName]) 
   
+    
+    if (status === "idle") {
+    return (
+               <div className={css.container}>
+               <input className={css.input} onChange={onChangeMovieName} type="text" value={moviesName}></input>
+                 <button className={css.searchBtn} onClick={onSearhMovie}>Search</button>
+                   <p className={css.searchInfrom}>Enter movie name</p>
+              </div>     
+           );      
+     }
    
-    
 
-      if (status === "idle") {
-          return (
-              <>
-              <input onChange={onChangeMovieName} type="text" value={moviesName}></input>
-                <button onClick={onSearhMovie}>Search</button>
-                  <p>Enter movie name</p>
-             </>     
-          );
-          
-    }
-    
-    if (status === "resolved") {
-        return (
-            <>
-            <input onChange={onChangeMovieName} type="text" value={moviesName}></input>
-            <button onClick={onSearhMovie}>Search</button>
-            {movies.length === 0
-            ? <p>Nothing found</p>
-            : <div>{movies.map(movie => (
-                <li key={movie.id}>
+  
+    return (
+    <div className={css.container}>
+      <input className={css.input} onChange={onChangeMovieName} type="text" value={moviesName}></input>
+      <button className={css.searchBtn}  onClick={onSearhMovie}>Search</button>
+            <div>
+           {movies.length === 0
+            ? <p className={css.searchInfrom}>Nothing found</p>
+            : <ul className={css.movies}>{movies.map(movie => (
+                <li className={css.movies__item} key={movie.id}>
                 <Link to={`${movie.id}`} state={{from: location}} >{movie.title || movie.name}</Link>
                 </li>
-                ))}</div>
+              ))}
+             </ul>
             }
-            </>
+            </div>   
+    </div>
         )
     }
- }     
-
